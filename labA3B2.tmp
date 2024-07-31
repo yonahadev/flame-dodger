@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://byqot5j2cym8u"]
+
+[ext_resource type="Texture2D" uid="uid://duh3hx8mfkwbl" path="res://icon.svg" id="1_b7kpe"]
+
+[sub_resource type="GDScript" id="GDScript_ue3sh"]
+script/source = "extends Sprite2D
+
+var speed = 400
+var direction = Vector2()
+var mousePos = Vector2()
+
+func _init():
+	pass
+	
+
+func _process(delta):
+	direction = Vector2()
+	if Input.is_action_pressed(\"w\"):
+		direction.y = -1
+	if Input.is_action_pressed(\"a\"):
+		direction.x = -1
+	if Input.is_action_pressed(\"s\"):
+		direction.y = 1
+	if Input.is_action_pressed(\"d\"):
+		direction.x = 1
+	
+	if direction.x == 0 or direction.y == 0:
+		position += direction * delta * speed
+	else:
+		position += direction * delta * speed / sqrt(2)
+		
+	mousePos = get_viewport().get_mouse_position()
+	#print(mousePos)
+"
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(327, 214)
+texture = ExtResource("1_b7kpe")
+script = SubResource("GDScript_ue3sh")

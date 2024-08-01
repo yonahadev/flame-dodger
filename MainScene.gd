@@ -90,6 +90,9 @@ func _on_timer_timeout():
 	var maxSpeed = clamp(elapsedTime*20,200,1000)
 	newFireball.speed = rng.randi_range(200,maxSpeed)
 	newFireball.add_to_group("fireballs")
+	var scale = rng.randf_range(2,7)
+	var hitboxRadius = scale*8
+	newFireball.get_node("Sprite2D").scale = Vector2(scale,scale)
+	newFireball.get_node("Hitbox").shape.radius = hitboxRadius
 	var delay = clamp(1-elapsedTime*0.02,0.12,1)
-	print(delay)
 	$Timer.start(delay)

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cy0lucxs2fv46"]
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="LivesContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+
+[node name="Lives" type="Label" parent="LivesContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Lives:redacted"
+
+[node name="TimeContainer" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -208.0
+offset_bottom = 42.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+
+[node name="Time" type="Label" parent="TimeContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Time:redacted"
+horizontal_alignment = 2

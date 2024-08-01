@@ -23,7 +23,7 @@ size_flags_vertical = 2
 size_flags_stretch_ratio = 0.0
 alignment = 1
 
-[node name="GameLabel" type="Label" parent="VBoxContainer"]
+[node name="MainLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -53,7 +53,7 @@ text = "Play"
 flat = true
 metadata/_edit_group_ = true
 
-[node name="GameLabel2" type="Label" parent="VBoxContainer"]
+[node name="Credits" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.279525, 0.54315, 1)
 theme_override_colors/font_outline_color = Color(0.173699, 2.11324e-07, 4.21144e-08, 1)

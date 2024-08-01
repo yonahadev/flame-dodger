@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cy0lucxs2fv46"]
+[gd_scene load_steps=2 format=3 uid="uid://cy0lucxs2fv46"]
+
+[ext_resource type="FontFile" uid="uid://bdapdl4kkxu2h" path="res://PixelifySans-VariableFont_wght.ttf" id="1_3y3yl"]
 
 [node name="GUI" type="CanvasLayer"]
 
@@ -10,7 +12,14 @@ theme_override_constants/margin_top = 10
 
 [node name="Lives" type="Label" parent="LivesContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.777338, 0, 0.236472, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.138835, 0.046453, 0.0748674, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("1_3y3yl")
+theme_override_font_sizes/font_size = 40
 text = "Lives:redacted"
 
 [node name="TimeContainer" type="MarginContainer" parent="."]
@@ -25,6 +34,13 @@ theme_override_constants/margin_right = 20
 
 [node name="Time" type="Label" parent="TimeContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.777338, 0, 0.236472, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.138835, 0.046453, 0.0748674, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("1_3y3yl")
+theme_override_font_sizes/font_size = 40
 text = "Time:redacted"
 horizontal_alignment = 2

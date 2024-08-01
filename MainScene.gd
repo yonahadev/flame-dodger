@@ -12,15 +12,12 @@ var lives = 3
 var startTime
 var elapsedTime
 
-var mainMenu
-
 var inGame = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	viewportDimensions = get_viewport_rect().size
-	mainMenu = $MainMenu
 	$GUI.visible = false
-	mainMenu.startGame.connect(_on_game_start)
+	$MainMenu.startGame.connect(_on_game_start)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -34,6 +31,18 @@ func _process(delta):
 		elapsedTime = Time.get_unix_time_from_system()-startTime
 		elapsedTime = snappedi(elapsedTime,1)
 		$GUI/TimeContainer/Time.text = "Time: " + str(elapsedTime)
+		if lives <= 0:
+			print("Died")
+			inGame = false
+			$Timer.stop()
+			for fireball in fireballs:
+				fireball.queue_free()
+			$GUI.visible = false
+			$MainMenu/VBoxContainer.visible = true
+			$MainMenu/VBoxContainer/MainLabel.text = "Score: " + str(elapsedTime)
+			$MainMenu/VBoxContainer/Button.text = "Play Again"
+			var playerChar = get_tree().get_first_node_in_group("players")
+			playerChar.queue_free()
 
 func _on_fireball_collision(fireball):
 	print(fireball," Destroyed")
@@ -43,9 +52,11 @@ func _on_fireball_collision(fireball):
 	
 func _on_game_start():
 	inGame = true
-	mainMenu.get_node("VBoxContainer").visible = false
+	lives = 3
+	$MainMenu/VBoxContainer.visible = false
 	var newPlayer = player.instantiate()
 	add_child(newPlayer)
+	newPlayer.add_to_group("players")
 	newPlayer.position = viewportDimensions/2
 	newPlayer.fireballCollision.connect(_on_fireball_collision)
 	$Timer.start(1)
@@ -76,9 +87,9 @@ func _on_timer_timeout():
 			newFireball.direction.y = -1
 			newFireball.position.y = viewportDimensions.y
 			newFireball.position.x = rng.randi_range(0,viewportDimensions.x)
-	
-	newFireball.speed = rng.randi_range(200,600)
+	var maxSpeed = clamp(elapsedTime*20,200,1000)
+	newFireball.speed = rng.randi_range(200,maxSpeed)
 	newFireball.add_to_group("fireballs")
-	var delay = clamp(1-elapsedTime*0.02,0.15,1)
+	var delay = clamp(1-elapsedTime*0.02,0.12,1)
 	print(delay)
 	$Timer.start(delay)

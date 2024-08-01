@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6ho4yae2f4ye"]
+[gd_scene load_steps=5 format=3 uid="uid://c6ho4yae2f4ye"]
 
 [ext_resource type="Script" path="res://MainScene.gd" id="1_fd00i"]
 [ext_resource type="PackedScene" uid="uid://cy0lucxs2fv46" path="res://GUI.tscn" id="2_g0t5x"]
 [ext_resource type="PackedScene" uid="uid://78t6ktd2eng2" path="res://MainMenu.tscn" id="4_acjqj"]
+[ext_resource type="Texture2D" uid="uid://c3j718cklm0mx" path="res://Weird background.png" id="4_svrmn"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_fd00i")
@@ -12,5 +13,17 @@ script = ExtResource("1_fd00i")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="MainMenu" parent="." instance=ExtResource("4_acjqj")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+use_parent_material = true
+offset_left = -113.0
+offset_top = -68.0
+offset_right = 47.0
+offset_bottom = -28.0
+scale = Vector2(20, 20)
+size_flags_horizontal = 4
+texture = ExtResource("4_svrmn")
+expand_mode = 3
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

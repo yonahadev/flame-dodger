@@ -7,7 +7,3 @@
 script = ExtResource("1_fd00i")
 
 [node name="Player" parent="." instance=ExtResource("2_jukfs")]
-
-[node name="Timer" type="Timer" parent="."]
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

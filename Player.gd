@@ -4,6 +4,8 @@ var speed = 400
 var direction = Vector2()
 var mousePos = Vector2()
 
+signal fireballCollision
+
 func _process(delta):
 	direction = Vector2()
 	if Input.is_action_pressed("w"):
@@ -39,6 +41,4 @@ func _process(delta):
 
 
 func _on_area_entered(area):
-	print(area)
-	emit_signal("fireballCollision",area)
-	pass # Replace with function body.
+	fireballCollision.emit(area)

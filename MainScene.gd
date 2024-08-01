@@ -19,7 +19,6 @@ func _process(delta):
 		var outOfBoundsX = fireball.position.x > viewportDimensions.x+100 or fireball.position.x < -100
 		var outOfBoundsY = fireball.position.y > viewportDimensions.y+100 or fireball.position.y < -100
 		if outOfBoundsX or outOfBoundsY:
-			print(fireball," Destroyed")
 			fireball.queue_free()
 
 func _on_fireball_collision(fireball):
@@ -27,10 +26,26 @@ func _on_fireball_collision(fireball):
 	fireball.queue_free()
 	
 func _on_timer_timeout():
-	print("Spawned Fireball")
 	var newFireball = fireball.instantiate()
 	add_child(newFireball)
+	var random = rng.randi_range(1,4)
+	match random:
+		1:
+			newFireball.direction.x = 1
+			newFireball.position.x = 0
+			newFireball.position.y = rng.randi_range(0,viewportDimensions.y)
+		2:
+			newFireball.direction.x = -1
+			newFireball.position.x = viewportDimensions.x
+			newFireball.position.y = rng.randi_range(0,viewportDimensions.y)
+		3:
+			newFireball.direction.y = 1
+			newFireball.position.y = 0
+			newFireball.position.x = rng.randi_range(0,viewportDimensions.x)
+		4:
+			newFireball.direction.y = -1
+			newFireball.position.y = viewportDimensions.y
+			newFireball.position.x = rng.randi_range(0,viewportDimensions.x)
+			
+	newFireball.speed = rng.randi_range(200,600)
 	newFireball.add_to_group("fireballs")
-	newFireball.direction.x = -1
-	newFireball.position.y = 300
-	newFireball.position.x = viewportDimensions.x

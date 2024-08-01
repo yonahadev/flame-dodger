@@ -61,3 +61,6 @@ func _on_timer_timeout():
 	
 	newFireball.speed = rng.randi_range(200,600)
 	newFireball.add_to_group("fireballs")
+	var delay = clamp(1-elapsedTime*0.02,0.15,1)
+	print(delay)
+	$Timer.start(delay)

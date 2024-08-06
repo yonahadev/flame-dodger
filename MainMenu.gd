@@ -14,3 +14,7 @@ func _process(delta):
 func _on_button_pressed():
 	startGame.emit()
 
+
+
+func _on_exit_button_pressed():
+	get_tree().quit()

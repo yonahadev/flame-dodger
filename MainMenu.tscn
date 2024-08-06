@@ -53,6 +53,23 @@ text = "Play"
 flat = true
 metadata/_edit_group_ = true
 
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 0.734186, 0.691037, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.852099, 0.827573, 1)
+theme_override_colors/font_hover_color = Color(0.999989, 0.323784, 0.261951, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("1_6uifg")
+theme_override_font_sizes/font_size = 60
+keep_pressed_outside = true
+text = "Exit"
+flat = true
+metadata/_edit_group_ = true
+
 [node name="Credits" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.279525, 0.54315, 1)
@@ -66,3 +83,5 @@ text = "by yonahadev"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
